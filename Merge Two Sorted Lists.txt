@@ -1,0 +1,32 @@
+class Solution:
+    def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
+        head=None
+        node=None
+        while(l1!=None and l2!=None):
+            if l1.val>=l2.val:
+                if head==None:
+                    head=l2
+                    node=head
+                else:
+                    node.next=l2
+                    node=node.next
+                l2=l2.next
+            else:
+                if head==None:
+                    head=l1
+                    node=head
+                else:
+                    node.next=l1
+                    node=node.next
+                l1=l1.next
+        if l1!=None:
+            if head==None:
+                head=l1
+            else:
+                node.next=l1
+        else:
+            if head==None:
+                head=l2
+            else:
+                node.next=l2
+        return head
